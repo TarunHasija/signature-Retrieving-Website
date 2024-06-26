@@ -9,7 +9,7 @@
     margin: 20px 0 20px 0;
 }
 
-.black , input , select , button{
+.block , input , select , button{
     width: 80%;
 }
 
@@ -18,5 +18,19 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+
+}
+
+.top > .block {
+    margin: 10px;
+}
+
+.bottom > button{
+    margin: 10px;
+}
+
+.block > p{
+    margin: 10px auto ;
+    width: 50%;
 
 }
