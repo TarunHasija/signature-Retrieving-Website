@@ -66,5 +66,11 @@ saveBtn.addEventListener('click',(e)=>{
 
 
 retrieveBtn.addEventListener('click',(e)=>{
-    
+    let savedCanvas = localStorage.getItem('canvasContents');
+
+    if(savedCanvas){
+        let img = new Image();
+        img.src = savedCanvas;
+        ctx.drawImage(img,0,0)
+    }
 })
