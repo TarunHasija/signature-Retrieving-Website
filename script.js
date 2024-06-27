@@ -7,16 +7,18 @@ const retrieveBtn = document.getElementById("retrieveButton");
 const fontPicker = document.getElementById("fontPicker");
 const ctx = canvas.getContext('2d');
 
-// let isDrawing = false;
-// let lastX = 0;
-// let lastY = 0;
+let isDrawing = false;
+let lastX = 0;
+let lastY = 0;
 
 colorPicker.addEventListener('change', (e) => {
     ctx.strokeStyle = e.target.value;
 });
 
 canvasColor.addEventListener('change', (e) => {
-    canvas.style.backgroundColor = e.target.value;
+    ctx.strokeStyle = e.target.value;
+    ctx.fillStyle = e.target.value;
+    
 });
 
 canvas.addEventListener('mousedown', (e) => {
@@ -38,4 +40,16 @@ canvas.addEventListener('mousemove', (e) => {
 
 canvas.addEventListener('mouseup', () => {
     isDrawing = false;
+});
+
+canvas.addEventListener('mouseout', () => {
+    isDrawing = false;
+});
+
+clearBtn.addEventListener('click', () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+fontPicker.addEventListener('change', (e) => {
+    ctx.font = `${e.target.value}px Arial`;
 });
