@@ -7,12 +7,9 @@ const retrieveBtn = document.getElementById("retrieveButton");
 const fontPicker = document.getElementById("fontPicker");
 const ctx = canvas.getContext('2d');
 
-let isDrawing = false;
-let lastX = 0;
-let lastY = 0;
 
 colorPicker.addEventListener('change', (e) => {
-    ctx.strokeStyle = e.target.value;
+    
 });
 
 canvasColor.addEventListener('change', (e) => {
@@ -42,14 +39,32 @@ canvas.addEventListener('mouseup', () => {
     isDrawing = false;
 });
 
-canvas.addEventListener('mouseout', () => {
-    isDrawing = false;
-});
+canvasColor.addEventListener('change',(e)=>{
+    ctx.fillStyle = e.target.value;
+    ctx.fillRect(0,0,800,500)
+})
 
-clearBtn.addEventListener('click', () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-});
+fontPicker.addEventListener('change',(e)=>{
+    ctx.lineWidth = e.target.value;
 
-fontPicker.addEventListener('change', (e) => {
-    ctx.font = `${e.target.value}px Arial`;
-});
+})
+
+clearBtn.addEventListener('click',(e)=>{
+    ctx.clearRect(0,0,canvas.width,canvas.height)
+})
+
+saveBtn.addEventListener('click',(e)=>{
+    localStorage.setItem('canvasContents',canvas.toDataURL());
+
+    let link = document.createElement('a');
+    link.download= "Your Signature.png";
+
+    link.href = canvas.toDataURL();
+
+    link.click();
+})
+
+
+retrieveBtn.addEventListener('click',(e)=>{
+    
+})
